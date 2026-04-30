@@ -1,5 +1,5 @@
 const express = require('express')
-
+const router = require('./mvc/routes/Config')
 class Server
 {
 
@@ -8,7 +8,10 @@ class Server
     constructor(porta)
     {
         this.app = express()
-        this.porta = porta     
+        this.porta = porta   
+        this.app.use(router)
+        this.app.set("view engine", "ejs")
+        this.app.set("views", "mvc/views")
     }
 
     listen()
